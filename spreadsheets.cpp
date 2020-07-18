@@ -9,22 +9,46 @@ using uint = unsigned int;
 using pii = pair<int, int>;
 using vi = vector <int>;
 
+int n;
+char alph[26];
+void char_gen()
+{
+	char c='A';
+	for (int i = 0; i < 26; i++)
+	{
+		alph[i]=c+i;
+	}
+}
 int main()
 {
-	int n;
+	char_gen();					//generate the alphabets
 	cin>>n;
-	while(n--)
+	string names[n][n];			//declaring a n*n array of names
+	for (int i = 0; i < n; i++)
 	{
-		string s;
-		cin>>s;
-		if(isalnum(s[1]))
+		for (int j = 0; j < n; j++)
 		{
-			
-		}
-		else
-		{
-			
+			int size = max(((int)(rand()*1000)%10),5);
+			cout<<size<<" ";
+			string s="";
+			while(size--)
+			{
+				int indx = (int)(rand()*1000)%26;		//generate a word
+				s+=alph[indx];
+			}
+			names[i][j]=s;					//push it in the array
 		}
 	}
-	
+	cout<<"DONE\n";
+	int count=n;
+	for (int i = 0; i < count; i++)
+	{
+		for (int j = 0; j < count; j++)
+		{
+			cout<<names[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+
+	return 0;
 }
