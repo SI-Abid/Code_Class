@@ -29,7 +29,6 @@ int main()
 		for (int j = 0; j < n; j++)
 		{
 			int size = max(((int)(rand()*1000)%10),5);
-			cout<<size<<" ";
 			string s="";
 			while(size--)
 			{
@@ -39,7 +38,6 @@ int main()
 			names[i][j]=s;					//push it in the array
 		}
 	}
-	cout<<"DONE\n";
 	int count=n;
 	for (int i = 0; i < count; i++)
 	{
