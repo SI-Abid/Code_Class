@@ -7,6 +7,7 @@ struct student
     string name;
     string major;
 };
+
 int main()
 {
     student st;
