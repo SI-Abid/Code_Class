@@ -1,6 +1,6 @@
 #include"bits/stdc++.h"
 using namespace std;
-//we are using recursion in this code
+//we are using recursion in this code and ternary operator
 void solve(int t)
 {
     if(t==0)
