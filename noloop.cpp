@@ -8,7 +8,7 @@ void solve(int t)
     
     int n;
     cin>>n;
-    
+
     (n&1) ? cout<<"odd\n" : cout<<"even\n";
     
     solve(t-1);
