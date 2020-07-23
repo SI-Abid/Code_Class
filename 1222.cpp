@@ -34,6 +34,7 @@ int main()
             wl=word.size();
             if(cc+wl+(cc!=0) <=c)
                 cc+=wl+(cc!=0);         //count the words len with space
+            
             else
             {
                 cc=wl;
