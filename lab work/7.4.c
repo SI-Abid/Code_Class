@@ -18,6 +18,7 @@ int main()
     int low, high;
     printf("Enter range: ");
     scanf("%d %d",&low,&high);
+    puts("Following numbers are Prime");
     for(int i=low;i<=high;i++)
     {
         printf(is_prime(i) ? "%d\n" : "", i);
