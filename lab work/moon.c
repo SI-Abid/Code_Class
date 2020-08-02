@@ -1,35 +1,35 @@
-#include "stdio.h"
-// draw triangle shape
-int main()
+#include <stdio.h>
+int main ()
+ 
 {
-    int n, m, f;
+    int n, m, f ,i ;
     printf("n: ");
     scanf("%d", &n);
-    for(int i=1;i<=n;i++)
+    for(i=1;i<=n;i++);
     {
         m=n-i;
-        while(m--)
+        while(m-->0)
         {
             printf(" ");
         }
         printf("/");
         f=(i-1)*2;
-        
+ 
         if(i==n)
         {
-            while(f--)
+            while (f--)
             {
-                printf("_");
+            printf("_");
             }
         }
-        else 
+        else
         {
-            while(f--)
+            while (f--)
             {
-                printf(" ");
+            printf(" ");
             }
         }
-        puts("\\");
+        printf ("\\ \n");
     }
     return 0;
 }
