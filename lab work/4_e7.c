@@ -15,9 +15,9 @@ int main()
     printf("a: ");
     scanf("%d", &a);
     printf("b: ");
-    scanf("%d",&b);
+    scanf("%d", &b);
     printf("c: ");
-    scanf("%d",&c);
+    scanf("%d", &c);
     printf("\n\n");
 
     //equation format maker
