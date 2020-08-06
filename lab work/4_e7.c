@@ -44,14 +44,14 @@ int main()
     if(d<0)
     {
         i = sqrt(-d)/(2*a); 
-        printf("x1 = %0.2lf + %0.2lfi\n",r,i);
-        printf("x2 = %0.2lf - %0.2lfi\n",r,i);
+        printf("x1 = %0.2lf + %0.2lfi\n", r, i);
+        printf("x2 = %0.2lf - %0.2lfi\n", r, i);
     }
     else
     {
         r2 = sqrt(d)/(2*a);
-        printf("x1 = %0.2lf\n",r+r2);
-        printf("x2 = %0.2lf\n",r-r2);
+        printf("x1 = %0.2lf\n", r+r2);
+        printf("x2 = %0.2lf\n", r-r2);
     }
     printf("\n");
     return 0;
