@@ -20,6 +20,12 @@ int main()
     scanf("%d", &c);
     printf("\n\n");
 
+    if(a==0)
+    {
+        puts("Given equation is linear");
+        return 0;
+    }
+
     //equation format maker
     printf("Equation: ");
     if(a<0)     printf("- %d", -a);

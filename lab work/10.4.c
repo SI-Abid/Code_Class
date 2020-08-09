@@ -22,6 +22,25 @@ void swap(int *a, int *b)
     *a = *b;
     *b = t;
 }
+void bubbleSort(int arr[])
+{
+    for(int i=0; i<10; i++)
+    {
+        for(int j=0;j<9-i;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                swap(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+    printf("Sorted Array:");
+    for(int i=0;i<10;i++)
+    {
+        printf(" %2d",arr[i]);
+    }
+    puts("");
+}
 
 int main()
 {
@@ -35,22 +54,7 @@ int main()
     }
     puts("");
     //Sort the array
-    for(int i=0; i<10; i++)
-    {
-        for(int j=0;j<9-i;j++)
-        {
-            if(arr[j]>arr[j+1])
-            {
-                swap(&arr[j], &arr[j+1]);
-            }
-        }
-    }
+    bubbleSort(arr);
     //print the array   
-    printf("Sorted Array:");
-    for(int i=0;i<10;i++)
-    {
-        printf(" %2d",arr[i]);
-    }
-    puts("");
     return 0;
 }
