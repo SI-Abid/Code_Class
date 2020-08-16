@@ -34,7 +34,7 @@ void bubbleSort(int x[])
 {
     for(int i=0; i<19; i++)
     {
-        for(int j=0; j<20-i-1; j++)
+        for(int j=0; j<19-i; j++)
         {
             if(x[j]>x[j+1])
             {
