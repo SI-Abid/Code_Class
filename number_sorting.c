@@ -21,11 +21,13 @@ int main()
         printf("Number of item: ");
         scanf("%d", &n);
         int arr[n];
+        
         printf("Enter your numbers\n");
         for(i=0; i<n; i++)
         {
             scanf("%d", &arr[i]);
         }
+
         if(q==1)
         {
             sort_ascend(arr, n);
@@ -34,6 +36,7 @@ int main()
         {
             sort_descend(arr, n);
         }
+
         printf("Sorted items:");
         for(i=0; i<n; i++)
         {

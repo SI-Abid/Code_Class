@@ -1,0 +1,13 @@
+In the code, we have used three types of sorting algorithm. Which are bubble sort,
+improved bubble sort and selection sort. 
+In bubbleSort function, we went through all the adjacent values and check if the first
+one is greater than the second one. If yes, then we swapped them. For this algorithm
+we get a time complexity of n^2 (worst case scenerio).
+The second funcion is the Improved bubble sort. Where we checked if the array is already
+sorted at some point, if it is sorted then we broke the main loop. So this algorithm 
+takes less time than the original one.
+Lastly, we applied selection sort, which is much faster than bubble sort. In this case,
+we took the full array and got the minimum value and swapped it with the first index. 
+Then we took the sub-array from second index to last and swapped the minimum with the 
+second index and so on. 
+Among the three sorting algorithms, selection sort is faster.
