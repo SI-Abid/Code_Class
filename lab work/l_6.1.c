@@ -27,6 +27,7 @@ int main()
         }
         printf("Sum of row %d: %d\n", i+1, row_sum[i]);
     }
+    
     for(int i=0; i<col; i++)
     {
         for(int j=0; j<row; j++)
