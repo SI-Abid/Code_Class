@@ -7,7 +7,8 @@
 #include "stdlib.h"
 #include "string.h"
 #include "ctype.h"
-#define For(n)  for(i=0; i<n; i++)
+
+// #define For(n)  for(i=0; i<n; i++)
 #define SIZE 200
 
 void alphacopy(char [], char []);
@@ -41,9 +42,6 @@ int main()
         {
             puts("not anagram.");
         }
-        // puts(c1);
-        // puts(c2);
-        // puts("done");
     }
 
     return 0;
@@ -98,7 +96,7 @@ int check_ana(char t1[], char t2[])
     Sort(a);
     Sort(b);
     
-    if(strcmp(a, b)==0)
+    if(!strcmp(a, b))
         return 1;
     
     return 0;
