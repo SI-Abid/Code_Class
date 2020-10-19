@@ -19,9 +19,7 @@ uc rotate_right(uc a)
 
 int main()
 {
-    printf("%d\n", rotate_left(160));
-    printf("%d\n", rotate_right(127));
+    printf("%d rotated left %d\n", 160, rotate_left(160));
+    printf("%d rotated right %d\n", 127, rotate_right(127));
     return 0;
 }
-// 1000 0000
-// 8    0
