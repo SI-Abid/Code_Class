@@ -140,7 +140,10 @@ int main()
     Bigint a("99"), b("2"), c;
   
     cin>>a>>b;
+/*
 
+
+*/
     c = a + b;         // c.equal(a.plus(b));
     cout << c;
     putchar('\n');
