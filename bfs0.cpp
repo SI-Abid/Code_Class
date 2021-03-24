@@ -1,4 +1,5 @@
 #include "bits/stdc++.h"
+using namespace std;
 
 #define ll long long
 #define ull unsigned long long
@@ -19,7 +20,6 @@ typedef pair<ll, ll> pll;
 const int MOD = 1e9 + 7;
 const int INF = 1e9;
 
-using namespace std;
 
 vi *adj;
 
