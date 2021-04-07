@@ -1,59 +1,79 @@
 #include <bits/stdc++.h>
+using namespace std;
 
-int **data;
-int row=0, col=0;
-map<int, pair<int,int>> MAP;
-
-void printF(int n, int k)
+class Board
 {
-    if (k == 0)
-        return;
+private:
+    int row = 1, col = 1, n;
 
-    printF(n - 1, k - 1);
-    data[row][col]=n;
-    MAP[n]={row,col};
-    col++;
-}
+public:
 
-void printR(int n, int k)
-{
-    if (k == 0)
-        return;
+    int **data;
+    vector<pair<int, int>> MAP;
 
-    data[row][col]=n;
-    MAP[n]={row,col};
-    col++;
-    printR(n - 1, k - 1);
-}
+    Board(int);
+    ~Board();
 
-int** makeBoard(int n)
-{
-    //generate a board of n square
-    data = new *int[n];
-    for(int k=0; k<n; k++)
-        data[k]= new int[n];
-
-    int nn = n * n, i;
-    for (i = 0; i < n; i++)
+    void makeBoard()
     {
-        if ((i ^ n) % 2)
+        //generate a board of n square
+        int nn=n*n, i;
+        for (i = 0; i < n; i++)
         {
-            col=0;
-            printF(nn - (n * i), n);
-    
+            if ((i ^ n) % 2)
+            {
+                col = 1;
+                setF(nn - (n * i), n);
+            }
+            else
+            {
+                col = 1;
+                setR(nn - (n * i), n);
+            }
+            row++;
         }
-        else
-        {
-            col=0;
-            printR(nn - (n * i), n);
-        
-        }
-        row++;
+        // return data;
     }
-    return data;
+
+    void setF(int n,int k)
+    {
+        if (k == 0)
+            return;
+
+        setF(n - 1, k - 1);
+        data[row-1][col-1] = n;
+        MAP[n] = {row, col};
+        col++;
+    }
+
+    void setR(int n, int k)
+    {
+        if (k == 0)
+            return;
+
+        data[row-1][col-1] = n;
+        MAP[n] = {row, col};
+        col++;
+        setR(n - 1, k - 1);
+    }
+    // map<int, pair<int, int>> getMap(int n)
+    // {
+    //     return this->MAP;
+    // }
+};
+
+Board::Board(int x)
+{
+    n=x;
+    MAP.resize(x*x+1);
+    data = new int *[x];
+    for (int k = 0; k < x; k++)
+        data[k] = new int[x];
 }
 
-map<int, pair<int,int>> getMap(int n)
+Board::~Board()
 {
-    return MAP;
+    for (int i = 0; i < n; i++)
+        delete data[i];
+    delete data;
 }
