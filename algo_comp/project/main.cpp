@@ -109,6 +109,7 @@ void prompt()
 
 void play()
 {
+    cout<<"Enter size: ";
     int n;
     cin >> n;
     Board gameboard(n);
