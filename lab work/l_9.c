@@ -82,7 +82,7 @@ int main()
         puts("Press any key to continue...");
         getchar();
         getchar();
-    }
+        }
     return 0;
 }
 
