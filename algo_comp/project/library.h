@@ -56,10 +56,7 @@ public:
         col++;
         setR(n - 1, k - 1);
     }
-    // map<int, pair<int, int>> getMap(int n)
-    // {
-    //     return this->MAP;
-    // }
+
 };
 
 Board::Board(int x)

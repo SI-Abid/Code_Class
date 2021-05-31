@@ -1,147 +1,107 @@
 #include "bits/stdc++.h"
 #include "library.h"
-#include "fstream"
+#include "saiham.h"
+#include "tangin.h"
+#include "akter.h"
+#include "sakhawat.h"
+
 using namespace std;
 
 // const int n=10;
-const char *filename = "data.txt";
-map<string, string> usr_pwd;
-fstream file;
-
+// const char *name = "userdata.txt";
+string title = "<~>-<~>-<~>-<~>-<~>-<~>-<~>-<~> LADDERS UP <~>-<~>-<~>-<~>-<~>-<~>-<~>-<~>";
 void play();
-void prompt();
-void login();
-void signup();
+void Menu();
 
 int main()
 {
-    string uuid;
-    file.open(filename, ios::in);
-    if (file)
-    {
-        while (file >> uuid)
-        {
-            file >> usr_pwd[uuid];
-        }
-    }
-    file.close();
+    system("clear");
+    
+    // LoadData();
+    // prompt();
+    // // LoadData();
 
-    prompt();
-    // auto gm = gameboard.MAP;
-    // for (int i = 1; i < gm.size(); i++)
-    // {
-    //     printf("%2d = (%d, %d)\n", i, gm[i].first, gm[i].second);
-    // }
-    // gameboard.
+    // // for(auto X : usr_pwd)
+    // // {
+    // //     cout << X.first << " " << X.second.pswd<<" "<<X.second.dvsn<<endl;
+    // // }
+
+    // Menu();
+    loadQuiz();
     return 0;
 }
 
-void login()
+void Menu()
 {
-    string usrname, passwd;
-    cout << "Username: ";
-    cin >> usrname;
-    cout << "Password: ";
-    cin >> passwd;
-    if (usr_pwd[usrname] == passwd)
+    string menu = "1: Play\n2: Highscore (X)\n3: Quit\nEnter your option: ";
+    cout << menu;
+    int opt;
+    cin >> opt;
+    switch(opt)
     {
-        cout << "Login success!" << endl;
-        play();
-    }
-    else
-    {
-        cout << "Wrong password! Try again" << endl;
-        prompt();
-    }
-}
-
-void signup()
-{
-    string usrname, passwd1, passwd2;
-    int lt;
-    cout << "Username: ";
-    cin >> usrname;
-    if (usr_pwd.find(usrname) != usr_pwd.end())
-    {
-        cout << "Username already exist. press 1 to login or press 2 to try again..." << endl;
-        cin >> lt;
-        lt == 1 ? login() : signup();
-    }
-    cout << "Password: ";
-    cin >> passwd1;
-    cout << "Confirm password: ";
-    cin >> passwd2;
-    if (passwd1 == passwd2)
-    {
-        file.open(filename, ios::app);
-        file << usrname << endl
-             << passwd1 << endl;
-        file.close();
-        cout << "Registered successfully!" << endl;
-        play();
-    }
-    else
-    {
-        cout << "Password doesn't match! Try again..." << endl;
-        signup();
-    }
-}
-
-void prompt()
-{
-    int ch;
-    cout << "Enter your choice (1-login 2-register):";
-    cin >> ch;
-    switch (ch)
-    {
-    case 1:
-        login();
-        break;
-    case 2:
-        signup();
-        break;
-    default:
-        cout << "Invalid Input. Try again..." << endl;
-        prompt();
-        break;
+        case 1:
+            play();
+            break;
+        case 2:
+            Highscore();
+            break;
+        case 3:
+            exit(0);
+            break;
+        default:
+            cout << "Invalid option! Try again..." << endl;
+            Menu();
+            break;
     }
 }
 
 void play()
 {
-    cout<<"Enter size: ";
     int n;
-    cin >> n;
+    n = getDifficulty();
+    vector<bool> isTrap = traps(n);
     Board gameboard(n);
     gameboard.makeBoard();
     int **board = gameboard.data;
 
     int pos = 1, inc;
+
     while (pos < n * n)
     {
+        
+        system("clear");        // for linux
+        // system("cls");       // for windows
+        cout << title << endl;
+
         for (int i = 0; i < n; i++)
         {
             for (int k = 0; k <= 4 * n; k++)
+            {
                 printf("-");
+            }
             cout << endl;
+            
             for (int j = 0; j < n; j++)
             {
                 if (board[i][j] == pos)
                     printf("| X ");
+                else if(isTrap[board[i][j]])
+                    printf("| 0 ");
                 else
                     printf("|   ");
             }
             cout << "|" << endl;
         }
         for (int k = 0; k <= 4 * n; k++)
+        {
             printf("-");
+        }
         cout << endl
              << "How many cell you want to move forward: ";
         cin >> inc;
         pos += inc;
+
         // printf("\033");
-        // system("cls");       // for windows
-        system("clear"); // for linux
     }
     cout << endl;
 }
