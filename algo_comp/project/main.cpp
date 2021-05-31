@@ -18,9 +18,12 @@ void Menu();
 int main()
 {
     system("clear");
-    
-    Menu();
+    loadData();
     loadQuiz();
+    prompt();
+    Menu();
+    // for(auto x:isTrap)
+    //     cout<<x<<" ";
     return 0;
 }
 
@@ -30,21 +33,21 @@ void Menu()
     cout << menu;
     int opt;
     cin >> opt;
-    switch(opt)
+    switch (opt)
     {
-        case 1:
-            play();
-            break;
-        case 2:
-            Highscore();
-            break;
-        case 3:
-            exit(0);
-            break;
-        default:
-            cout << "Invalid option! Try again..." << endl;
-            Menu();
-            break;
+    case 1:
+        play();
+        break;
+    case 2:
+        Highscore();
+        break;
+    case 3:
+        exit(0);
+        break;
+    default:
+        cout << "Invalid option! Try again..." << endl;
+        Menu();
+        break;
     }
 }
 
@@ -52,7 +55,7 @@ void play()
 {
     int n;
     n = getDifficulty();
-    vector<bool> isTrap = loadTraps(n);
+    loadTraps(n);
     Board gameboard(n);
     gameboard.makeBoard();
     int **board = gameboard.data;
@@ -61,8 +64,8 @@ void play()
 
     while (pos < n * n)
     {
-        
-        system("clear");        // for linux
+
+        system("clear"); // for linux
         // system("cls");       // for windows
         cout << title << endl;
 
@@ -73,24 +76,38 @@ void play()
                 printf("-");
             }
             cout << endl;
-            
+
             for (int j = 0; j < n; j++)
             {
                 if (board[i][j] == pos)
-                    printf("| X ");
-                else if(isTrap[board[i][j]])
-                    printf("| 0 ");
+                    cout << "| X ";
+
+                else if (isTrap[board[i][j]])
+                    cout << "| 0 ";
+                
                 else
-                    printf("|   ");
+                    cout << "|   ";
             }
             cout << "|" << endl;
         }
         for (int k = 0; k <= 4 * n; k++)
         {
-            printf("-");
+            cout<<"-";
         }
         cout << endl;
+        
+        int move = 1;
+        do
+        {
+            if (move > 10 || move < 1)
+            {
+                cout << "Invalid move. Try again..." << endl;
+            }
+            cout << "Enter how many cell you want to move forward(1-10): ";
+            cin >> move;
+        } while (move > 10 || move < 1);
 
+        pos += move;
         // printf("\033");
     }
     cout << endl;

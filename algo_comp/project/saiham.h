@@ -6,6 +6,7 @@
 #include "ctype.h"
 #include "stdlib.h"
 #include "time.h"
+
 using namespace std;
 
 //------------------Structure----------------
@@ -27,19 +28,21 @@ const char *filename= "userdata.txt";
 map <string, data> usr_pwd;
 quiz prosno[50];
 vector<bool> isTrap;
+void Highscore();
+
 //----------------------Prototypes----------------------
 
 void prompt();
 void signup();
 void login();
-void LoadData();
+void loadData();
 void loadQuiz();
 void loadTraps(int);
 string ToLower(string);
 
 //----------------------Functions-----------------------
 
-void LoadData()
+void loadData()
 {
     fstream file;
     file.open(filename, ios::in);
@@ -201,19 +204,24 @@ void loadTraps(int size)
     switch (size)
     {
     case 9:
-        opacity=25;
+        opacity=20;
         break;
     
     case 13:
-        opacity=20;
+        opacity=15;
         break;
 
     case 18:
-        opacity=15;
+        opacity=10;
         break;
     }
 	for (int i = 0; i < size*size; i++)
 	{
-        isTrap[i] << (rand()%opacity ? 0: 1);	
+        isTrap[i] = ((rand()%opacity)*rand()%opacity ? 0: 1);	
 	}
+}
+
+void Highscore()
+{
+
 }
