@@ -1,6 +1,11 @@
-#include "bits/stdc++.h"
+#include "iostream"
+#include "map"
+#include "vector"
 #include "fstream"
+#include "sstream"
 #include "ctype.h"
+#include "stdlib.h"
+#include "time.h"
 using namespace std;
 
 //------------------Structure----------------
@@ -16,23 +21,23 @@ typedef struct
     bool used;
 } quiz;
 
-//---------------------Global varriables-------------------
+//---------------------Global varriables----------------
 
 const char *filename= "userdata.txt";
 map <string, data> usr_pwd;
 quiz prosno[50];
-
-//------------------Prototypes---------------
+vector<bool> isTrap;
+//----------------------Prototypes----------------------
 
 void prompt();
 void signup();
 void login();
 void LoadData();
 void loadQuiz();
-
+void loadTraps(int);
 string ToLower(string);
 
-//------------------Functions----------------
+//----------------------Functions-----------------------
 
 void LoadData()
 {
@@ -185,9 +190,30 @@ void loadQuiz()
         prosno[i].used = false;
     }
     file.close();
-    // for(int i=0; i<50; i++)
-    // {
-    //     cout<<prosno[i].que<<endl<<prosno[i].optA<<" "<<prosno[i].optB<<" "<<prosno[i].optC<<endl;
-    //     cout<<prosno[i].ans<<" "<<(prosno[i].used?"Used":"Unused")<<endl;
-    // }
+    
+}
+
+void loadTraps(int size)
+{
+    isTrap.resize(size*size);
+    srand(time(0));
+	int opacity;
+    switch (size)
+    {
+    case 9:
+        opacity=25;
+        break;
+    
+    case 13:
+        opacity=20;
+        break;
+
+    case 18:
+        opacity=15;
+        break;
+    }
+	for (int i = 0; i < size*size; i++)
+	{
+        isTrap[i] << (rand()%opacity ? 0: 1);	
+	}
 }

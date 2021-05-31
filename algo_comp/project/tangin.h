@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int getDifficulty()
 {
     int choice, difficulty;

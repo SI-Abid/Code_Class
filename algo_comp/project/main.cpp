@@ -1,9 +1,11 @@
-#include "bits/stdc++.h"
+#include "iostream"
+#include "map"
+#include "vector"
+#include "stdlib.h"
+#include "time.h"
 #include "library.h"
 #include "saiham.h"
 #include "tangin.h"
-#include "akter.h"
-#include "sakhawat.h"
 
 using namespace std;
 
@@ -17,16 +19,7 @@ int main()
 {
     system("clear");
     
-    // LoadData();
-    // prompt();
-    // // LoadData();
-
-    // // for(auto X : usr_pwd)
-    // // {
-    // //     cout << X.first << " " << X.second.pswd<<" "<<X.second.dvsn<<endl;
-    // // }
-
-    // Menu();
+    Menu();
     loadQuiz();
     return 0;
 }
@@ -59,7 +52,7 @@ void play()
 {
     int n;
     n = getDifficulty();
-    vector<bool> isTrap = traps(n);
+    vector<bool> isTrap = loadTraps(n);
     Board gameboard(n);
     gameboard.makeBoard();
     int **board = gameboard.data;
@@ -96,10 +89,7 @@ void play()
         {
             printf("-");
         }
-        cout << endl
-             << "How many cell you want to move forward: ";
-        cin >> inc;
-        pos += inc;
+        cout << endl;
 
         // printf("\033");
     }
