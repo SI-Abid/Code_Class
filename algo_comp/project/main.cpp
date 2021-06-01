@@ -22,8 +22,7 @@ int main()
     loadQuiz();
     prompt();
     Menu();
-    // for(auto x:isTrap)
-    //     cout<<x<<" ";
+    saveScore();
     return 0;
 }
 
@@ -42,7 +41,7 @@ void Menu()
         Highscore();
         break;
     case 3:
-        exit(0);
+        return;
         break;
     default:
         cout << "Invalid option! Try again..." << endl;
