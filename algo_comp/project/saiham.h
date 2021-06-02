@@ -229,7 +229,7 @@ void loadTraps(int size)
 void saveScore()
 {
     string div = prefix + usr_pwd[usrname].dvsn + suffix;
-    
+
     fstream file;
     file.open(div.c_str(), ios::out | ios::app);
 

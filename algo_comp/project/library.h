@@ -8,7 +8,6 @@ private:
     int row = 1, col = 1, n;
 
 public:
-
     int **data;
     vector<pair<int, int>> MAP;
 
@@ -18,7 +17,7 @@ public:
     void makeBoard()
     {
         //generate a board of n square
-        int nn=n*n, i;
+        int nn = n * n, i;
         for (i = 0; i < n; i++)
         {
             if ((i ^ n) % 2)
@@ -36,13 +35,13 @@ public:
         // return data;
     }
 
-    void setF(int n,int k)
+    void setF(int n, int k)
     {
         if (k == 0)
             return;
 
         setF(n - 1, k - 1);
-        data[row-1][col-1] = n;
+        data[row - 1][col - 1] = n;
         MAP[n] = {row, col};
         col++;
     }
@@ -52,18 +51,17 @@ public:
         if (k == 0)
             return;
 
-        data[row-1][col-1] = n;
+        data[row - 1][col - 1] = n;
         MAP[n] = {row, col};
         col++;
         setR(n - 1, k - 1);
     }
-
 };
 
 Board::Board(int x)
 {
-    n=x;
-    MAP.resize(x*x+1);
+    n = x;
+    MAP.resize(x * x + 1);
     data = new int *[x];
     for (int k = 0; k < x; k++)
         data[k] = new int[x];

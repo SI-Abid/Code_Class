@@ -83,7 +83,7 @@ void play()
 
                 else if (isTrap[board[i][j]])
                     cout << "| 0 ";
-                
+
                 else
                     cout << "|   ";
             }
@@ -91,10 +91,10 @@ void play()
         }
         for (int k = 0; k <= 4 * n; k++)
         {
-            cout<<"-";
+            cout << "-";
         }
         cout << endl;
-        
+
         int move = 1;
         do
         {
