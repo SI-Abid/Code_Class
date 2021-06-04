@@ -9,7 +9,7 @@
 
 using namespace std;
 
-// const int n=10;
+int score = 0;
 // const char *name = "userdata.txt";
 string title = "<~>-<~>-<~>-<~>-<~>-<~>-<~>-<~> LADDERS UP <~>-<~>-<~>-<~>-<~>-<~>-<~>-<~>";
 void play();
@@ -22,7 +22,7 @@ int main()
     loadQuiz();
     prompt();
     Menu();
-    saveScore();
+    saveScore(score);
     return 0;
 }
 
@@ -52,6 +52,7 @@ void Menu()
 
 void play()
 {
+    srand(time(0));
     int n;
     n = getDifficulty();
     loadTraps(n);
@@ -78,14 +79,27 @@ void play()
 
             for (int j = 0; j < n; j++)
             {
-                if (board[i][j] == pos)
+                if(pos==board[i][j])
+                {
                     cout << "| X ";
-
-                else if (isTrap[board[i][j]])
-                    cout << "| 0 ";
-
+                    if (isTrap[pos])
+                    {
+                        cout << "Oops! You have landed on a trap..." << endl;
+                        score -= 5;
+                    }
+                    else if (pos^rand())
+                    {
+                        score += popQuiz();
+                    }
+                    else
+                    {
+                        score += 5;
+                    }
+                }
                 else
-                    cout << "|   ";
+                {
+                    cout<<"|   ";
+                }
             }
             cout << "|" << endl;
         }

@@ -1,4 +1,6 @@
 #include "iostream"
+#include "algorithm"
+#include "utility"
 #include "map"
 #include "vector"
 #include "fstream"
@@ -19,7 +21,8 @@ typedef struct
 
 typedef struct
 {
-    string que, optA, optB, optC, ans;
+    string que, optA, optB, optC;
+    char ans;
     bool used;
 } quiz;
 
@@ -39,10 +42,12 @@ void signup();
 void login();
 void loadData();
 void loadQuiz();
+int popQuiz();
 void loadTraps(int);
 void loadScore();
 void saveScore();
 void Highscore();
+int random(int, int);
 string ToLower(string);
 
 //----------------------Functions-----------------------
@@ -195,7 +200,7 @@ void loadQuiz()
             prosno[i].optA = options[0];
             prosno[i].optB = options[1];
             prosno[i].optC = options[2];
-            prosno[i].ans = options[3];
+            prosno[i].ans = options[3][0];
             prosno[i].used = false;
         }
     file.close();
@@ -226,7 +231,7 @@ void loadTraps(int size)
     }
 }
 
-void saveScore()
+void saveScore(int score)
 {
     string div = prefix + usr_pwd[usrname].dvsn + suffix;
 
@@ -235,11 +240,55 @@ void saveScore()
 
     if (file)
     {
-        // cout << "File created as " << div << endl;
+        file << usrname << " " << score << endl;
     }
     file.close();
 }
 
+int random(int minN, int maxN)
+{
+    return (rand() % (maxN - minN)) + minN;
+}
+
+int popQuiz()
+{
+    cout << "~~~~~~~~Stop! You have stumbled upon a trivia. Time to test your IQ~~~~~~~~" << endl;
+    int r = random(0, 49);
+    cout << prosno[r].que << endl;
+    cout << "(A) " << prosno[r].optA << "(B) " << prosno[r].optB << "(C) " << prosno[r].optC << endl;
+    cout << "Your answer(a/b/c): " << endl;
+    char c;
+    cin >> c;
+    prosno[r].used = true;
+    return tolower(c) == prosno[r].ans ? 10 : -10;
+}
+
+bool compare(pair<string, int> a, pair<string, int> b)
+{
+    return a.second > b.second;
+}
+
 void Highscore()
 {
+    string div = prefix + usr_pwd[usrname].dvsn + suffix;
+    vector<pair<string, int>> all_score;
+
+    fstream fin;
+    fin.open(div.c_str(), ios::in);
+
+    if (fin)
+    {
+        string name, score;
+        while (fin >> name)
+        {
+            fin >> score;
+            all_score.push_back(make_pair(name, score));
+        }
+    }
+    sort(all_score.begin(), all_score.end(), compare);
+    cout << "--------------Leaderboard--------------" << endl;
+    for (auto x : all_score)
+    {
+        cout << x.first << " " << x.second << endl;
+    }
 }
