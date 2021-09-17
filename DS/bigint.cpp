@@ -3,7 +3,7 @@ using namespace std;
 
 class Bigint
 {
-    public:
+public:
     string a;
     int sign;
 
@@ -20,7 +20,7 @@ class Bigint
         sign = newSign;
         for (int i = a.size() - 1; i > 0 && a[i] == '0'; i--)
             a.erase(a.begin() + i);
-                
+
         if (a.size() == 1 && a[0] == '0')
             sign = 1;
         return (*this);
@@ -38,7 +38,7 @@ class Bigint
     }
     friend ostream &operator<<(ostream &out, const Bigint &b)
     {
-        putchar(b.sign==-1?'-':'\0');
+        putchar(b.sign == -1 ? '-' : '\0');
         for (int i = b.a.size() - 1; i >= 0; i--)
             putchar(b.a[i]);
         return out;
@@ -50,7 +50,7 @@ class Bigint
         for (int i = a.size() - 1; i >= 0; i--)
             if (a[i] != b.a[i])
                 return a[i] < b.a[i];
-        
+
         return false;
     }
     Bigint operator+(Bigint b)
@@ -138,18 +138,19 @@ class Bigint
 int main()
 {
     Bigint a("99"), b("2"), c;
-  
-    cin>>a>>b;
-/*
+
+    cin >> a >> b;
+
+    /*
 
 
 */
-    c = a + b;         // c.equal(a.plus(b));
+    c = a + b; // c.equal(a.plus(b));
     cout << c;
     putchar('\n');
 
     c = a - b;
-    cout << a-b << " " << a+b;
+    cout << a - b << " " << a + b;
     putchar('\n');
 
     c = a * b;
