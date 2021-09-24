@@ -25,6 +25,16 @@ public:
             sign = 1;
         return (*this);
     }
+    bool operator==(const Bigint b)
+    {
+        if(a.size()!=b.a.size())    return false;
+        for (int i = 0; i < a.size(); i++)
+        {
+            if(a[i]!=b.a[i])    return false;
+        }
+        return true;
+        
+    }
     void operator=(string b)
     {
         a = b[0] == '-' ? b.substr(1) : b;
@@ -140,11 +150,6 @@ int main()
     Bigint a("99"), b("2"), c;
 
     cin >> a >> b;
-
-    /*
-
-
-*/
     c = a + b; // c.equal(a.plus(b));
     cout << c;
     putchar('\n');
