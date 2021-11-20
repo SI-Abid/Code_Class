@@ -8,13 +8,21 @@ void update(int *a,int *b) {
     (*b)=fabs((*b)-t);
 }
 
+void swap(int *x, int *y) {
+    // Complete this function
+    int t=(*x);
+    (*x)=(*y);
+    (*y)=t;
+}
+
 int main() 
 {
     int a, b;
-    int *pa = &a, *pb = &b;
-    scanf("%d %d", &a, &b);
-    update(pa, pb);
-    printf("%d\n%d", a, b);
+    a = 3;
+    b = 5;
+    printf("Before: a = %d, b = %d\n", a, b);
+    swap(&a, &b);
+    printf("After: a = %d, b = %d\n", a, b);
 
     return 0;
 }
