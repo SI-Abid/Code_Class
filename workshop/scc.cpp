@@ -57,6 +57,7 @@ Graph Graph::getTranspose()
 void Graph::DFSUtil(int v, bool visited[])
 {
     visited[v] = true;
+    cout<< v << " ";
     list<int>::iterator i;
     for (i = adj[v].begin(); i != adj[v].end(); ++i)
     {
@@ -118,6 +119,5 @@ int main(int argc, char const *argv[])
     g.addEdge(3, 4);
 
     g.printSCCs();
-    
     return 0;
 }
