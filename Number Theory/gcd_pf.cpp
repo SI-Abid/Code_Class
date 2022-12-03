@@ -36,18 +36,49 @@ void prime_facto_gcd(int n, int m)
             pf.push_back({primes[i], cnt});
         }
     }
+    vector<pair<int, int>> pf2;
+    for (int i = 0; i < primes.size() && primes[i] * primes[i] <= m; i++)
+    {
+        if (m % primes[i] == 0)
+        {
+            int cnt = 0;
+            while (m % primes[i] == 0)
+            {
+                cnt++;
+                m /= primes[i];
+            }
+            pf2.push_back({primes[i], cnt});
+        }
+    }
     if (n != 1)
         pf.push_back({n, 1});
-    int res = 1;
-    for (auto p : pf)
+    if (m != 1)
+        pf2.push_back({m, 1});
+    vector<pair<int, int>> res;
+    int i = 0, j = 0;
+    while (i < pf.size() && j < pf2.size())
     {
-        if (p.second >= 1 && m % p.first == 0)
-            res *= p.first;
+        if (pf[i].first == pf2[j].first)
+        {
+            res.push_back({pf[i].first, min(pf[i].second, pf2[j].second)});
+            i++;
+            j++;
+        }
+        else if (pf[i].first < pf2[j].first)
+            i++;
+        else
+            j++;
     }
-    cout << res;
+    int ans = 1;
+    for (auto p : res)
+    {
+        for (int i = 0; i < p.second; i++)
+            ans *= p.first;
+    }
+    cout << ans << endl;
 }
 signed main()
 {
-    prime_facto_gcd(140,70);
+    prime_facto_gcd(16,20);
     return 0;
 }
