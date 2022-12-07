@@ -1,0 +1,26 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+VAR1 DB 33H ; 33H=3
+VAR2 DB ?
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX
+
+    MOV AH,1
+    INT 21H
+    MOV VAR2,AL
+
+    ;NEWLINE
+    MOV AH,2
+    MOV DL,0AH
+    INT 21H
+    MOV DL,0DH
+    INT 21H
+    
+    MOV AH,2
+    MOV DL,VAR1
+    INT 21H
+    MOV DL,VAR2
+    INT 21H

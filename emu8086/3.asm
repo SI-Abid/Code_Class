@@ -1,0 +1,49 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+MSG1 DB "ENTER A NUMBER: $"
+MSG2 DB "ENTER ANOTHER NUMBER:  $"
+MSG3 DB "SUM IS: $"
+
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS, AX
+
+    LEA DX,MSG1
+    MOV AH,9
+    INT 21H
+
+    MOV AH,1
+    INT 21H
+    MOV BL,AL
+
+    MOV AH,2
+    MOV DL,0AH
+    INT 21H
+    MOV DL,0DH
+    INT 21H
+
+    LEA DX,MSG2
+    MOV AH,9
+    INT 21H
+
+    MOV AH,1
+    INT 21H
+    MOV CL,AL
+
+    MOV AH,2
+    MOV DL,0AH
+    INT 21H
+    MOV DL,0DH
+    INT 21H
+
+    LEA DX,MSG3
+    MOV AH,9
+    INT 21H
+
+    ADD BL,CL
+    MOV AH,2
+    SUB BL,48
+    MOV DL,BL
+    INT 21H
