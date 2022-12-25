@@ -1,8 +1,8 @@
 .MODEL SMALL
 .STACK 100H
 .DATA
-MSG DB "Enter a ALPHABET: $"
-VAR1 DB ?
+MSG DB "Enter an ALPHABET: $"
+VAR DB ?
 .CODE
 MAIN PROC
     MOV AX,@DATA
@@ -14,11 +14,11 @@ MAIN PROC
     
     MOV AH,1
     INT 21H
-    MOV VAR1,AL
+    MOV VAR,AL
            
     ;CONVERT G -> 7
-    SUB VAR2,10H
+    SUB VAR,10H
            
     MOV AH,2
-    MOV DL,VAR1
+    MOV DL,VAR
     INT 21H
